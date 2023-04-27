@@ -259,7 +259,7 @@ MonoBehaviour:
   speed: 2
   player: {fileID: 499698246}
   _melee: {fileID: 11400000, guid: a4e3de8176a6f7e4f8e2f0393ba96d50, type: 2}
-  _midRanged: {fileID: 11400000, guid: 1f8675e404190624fafa8e8929ca4423, type: 2}
+  _midRanged: {fileID: 11400000, guid: 4a37b054c473901468428ae1036f4617, type: 2}
   _longRanged: {fileID: 11400000, guid: c9dab1024379711429fba6c693875eeb, type: 2}
 --- !u!65 &499698250
 BoxCollider:

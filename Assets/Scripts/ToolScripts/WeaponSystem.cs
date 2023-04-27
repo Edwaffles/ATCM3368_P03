@@ -11,7 +11,7 @@ public class WeaponSystem : ScriptableObject
 
     [SerializeField][Range(1,50)] private float _range;
 
-    [SerializeField] [Range(1, 3)] private int _rateOfAttack;
+    [SerializeField] [Range(.5f,2)] private float _rateOfAttack;
 
     [Header("Advanced Stats")]
     [SerializeField] private float _knockback;
@@ -33,7 +33,7 @@ public class WeaponSystem : ScriptableObject
 
     public float Damage => _damage;
     public float Range => _range;
-    public int AttackRate => _rateOfAttack;
+    public float AttackRate => _rateOfAttack;
     public float Knockback => _knockback;
     public float Splash => _aoe;
     public float Crit => _critStrike;

@@ -12,28 +12,60 @@ public class UseWeapon : MonoBehaviour
 
     private bool _isStream;
 
+    private bool _isReady;
+
     // Use this for initialization
     private void Awake()
     {
         _activeWeapon = _whoPlayer.CurrentWeapon();
+        _isStream = _activeWeapon.IsStream;
+        _isReady = true;
 
     }
     // Update is called once per frame
     void Update()
     {
         _activeWeapon = _whoPlayer.CurrentWeapon();
+        _isStream = _activeWeapon.IsStream;
 
-        if (Input.GetMouseButtonDown(0))
+        if (_isStream == true)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, _activeWeapon.Range))
+            if (Input.GetMouseButton(0))
             {
-                hit.collider.SendMessage("RayTargetHit",_activeWeapon, SendMessageOptions.DontRequireReceiver);               
+                RaycastHit hit;
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, _activeWeapon.Range))
+                {
+                    hit.collider.SendMessage("RayTargetHit", _activeWeapon, SendMessageOptions.DontRequireReceiver);
+                }
             }
         }
-        
-        
+        else if(_isStream == false)
+        {
+            if (Input.GetMouseButtonDown(0) && _isReady)
+            {
+                Debug.Log(Time.time);
+                RaycastHit hit;
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, _activeWeapon.Range))
+                {
+                    hit.collider.SendMessage("RayTargetHit", _activeWeapon, SendMessageOptions.DontRequireReceiver);
+
+                }
+
+                StartCoroutine(RateOfAttack(_activeWeapon.AttackRate));
+
+            }
+        }        
     }
+
+    IEnumerator RateOfAttack(float rate)
+    {
+        _isReady = false;
+        yield return new WaitForSeconds(2 * (1 / rate));
+        _isReady = true;
+        Debug.Log(Time.time);
+    }
+
+
 
    
 }

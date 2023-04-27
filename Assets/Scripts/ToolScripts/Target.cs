@@ -22,11 +22,11 @@ public class Target : MonoBehaviour
 
         if(dDmg > usedWeapon.Crit)
         {
-            _hitpoints -= (usedWeapon.AttackRate * usedWeapon.Damage) * 2;
+            _hitpoints -= (usedWeapon.Damage) * 2;
         }
         else
         {
-            _hitpoints -= (usedWeapon.AttackRate * usedWeapon.Damage);
+            _hitpoints -= (usedWeapon.Damage);
         }
 
         Knocked(usedWeapon.Knockback);

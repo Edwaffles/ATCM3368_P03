@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af2fae206a85d714cbcb21f5d52fa00f, type: 3}
-  m_Name: w_Shotgun
+  m_Name: w_Flammen
   m_EditorClassIdentifier: 
-  _name: Shotgun
-  _damage: 7
-  _range: 5
-  _rateOfAttack: 1.2
-  _knockback: 150
-  _aoe: 10
+  _name: Flammen
+  _damage: 2
+  _range: 4
+  _rateOfAttack: 0.5
+  _knockback: 30
+  _aoe: 0
   _critStrike: 0
-  _isStream: 0
+  _isStream: 1
   _isOverTime: 0
