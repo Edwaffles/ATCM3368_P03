@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: w_Flammen
   m_EditorClassIdentifier: 
   _name: Flammen
-  _damage: 2
+  _damage: 1
   _range: 4
   _rateOfAttack: 0.5
   _knockback: 30
-  _aoe: 0
+  _areaOfEffect: 2
   _critStrike: 0
   _critDmg: 0
   _isStream: 1
-  _isOverTime: 0
+  _isOverTime: 1
+  _overTimeLength: 7
+  _overTimeTickRte: 0.5
+  _overTimeDmg: 2

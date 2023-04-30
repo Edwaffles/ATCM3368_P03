@@ -7,16 +7,17 @@ public class PlayerController : MonoBehaviour
     public Vector2 turn;
     public float sensitivity = .5f;
     public Vector3 deltaMove;
-    public float speed = 5f;
+    public float speed = .01f;
     public GameObject player;
 
     private float jumpAmount = .5f;
     private Rigidbody playerBody;
 
 
-    [SerializeField] private WeaponSystem _melee;
-    [SerializeField] private WeaponSystem _midRanged;
-    [SerializeField] private WeaponSystem _longRanged;
+    [SerializeField] private WeaponSystem _weaponOne;
+    [SerializeField] private WeaponSystem _weaponTwo;
+    [SerializeField] private WeaponSystem _weaponThree;
+    [SerializeField] private WeaponSystem _weaponFour;
 
     private WeaponSystem _currentWeapon;
 
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         playerBody = gameObject.GetComponent<Rigidbody>();
 
-        _currentWeapon = _melee;
+        _currentWeapon = _weaponOne;
     }
 
     // Update is called once per frame  
@@ -33,19 +34,19 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(0.001f, 0f, 0f);
+            transform.Translate(0.04f, 0f, 0f);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(-0.001f, 0f, 0f);
+            transform.Translate(-0.04f, 0f, 0f);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(0.0f, 0f, -0.001f);
+            transform.Translate(0.0f, 0f, -0.04f);
         }
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(0.0f, 0f, 0.001f);
+            transform.Translate(0.0f, 0f, 0.04f);
         }
         if (Input.GetKey(KeyCode.Space))
         {
@@ -58,17 +59,20 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            _currentWeapon = _melee;
+            _currentWeapon = _weaponOne;           
         }
         if (Input.GetKey(KeyCode.Alpha2))
         {
-            _currentWeapon = _midRanged;
+            _currentWeapon = _weaponTwo;            
         }
         if (Input.GetKey(KeyCode.Alpha3))
         {
-            _currentWeapon = _longRanged;
+            _currentWeapon = _weaponThree;           
         }
-
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+            _currentWeapon = _weaponFour;
+        }
 
 
 

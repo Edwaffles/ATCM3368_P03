@@ -17,8 +17,11 @@ MonoBehaviour:
   _range: 5
   _rateOfAttack: 1.2
   _knockback: 150
-  _aoe: 10
+  _areaOfEffect: 5
   _critStrike: 0
   _critDmg: 0.75
   _isStream: 0
   _isOverTime: 0
+  _overTimeLength: 0
+  _overTimeTickRte: 0
+  _overTimeDmg: 1

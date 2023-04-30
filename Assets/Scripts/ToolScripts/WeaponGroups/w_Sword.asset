@@ -15,10 +15,13 @@ MonoBehaviour:
   _name: Longsword
   _damage: 2
   _range: 2
-  _rateOfAttack: 2
-  _knockback: 25
-  _aoe: 1
+  _rateOfAttack: 0.589
+  _knockback: 50
+  _areaOfEffect: 2
   _critStrike: 0.25
   _critDmg: 0.3
   _isStream: 0
-  _isOverTime: 0
+  _isOverTime: 1
+  _overTimeLength: 5
+  _overTimeTickRte: 1
+  _overTimeDmg: 1

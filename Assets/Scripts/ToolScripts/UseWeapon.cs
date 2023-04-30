@@ -36,18 +36,27 @@ public class UseWeapon : MonoBehaviour
                 if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, _activeWeapon.Range))
                 {
                     SplashDamage(hit);
+                    if(_activeWeapon.Overtime == true)
+                    {
+                        hit.collider.SendMessage("RayTargetBurn", _activeWeapon, SendMessageOptions.DontRequireReceiver);
+                    }
                 }
+                StartCoroutine(RateOfAttack(_activeWeapon.AttackRate));
             }
         }
         else if(_isStream == false)
         {
             if (Input.GetMouseButtonDown(0) && _isReady)
             {
-                Debug.Log(Time.time);
+                //Debug.Log(Time.time);
                 RaycastHit hit;
                 if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, _activeWeapon.Range))
                 {                    
                     SplashDamage(hit);
+                    if (_activeWeapon.Overtime == true)
+                    {                       
+                        hit.collider.SendMessage("RayTargetBurn", _activeWeapon, SendMessageOptions.DontRequireReceiver);
+                    }
                 }
                 StartCoroutine(RateOfAttack(_activeWeapon.AttackRate));
             }
@@ -58,19 +67,18 @@ public class UseWeapon : MonoBehaviour
         _isReady = false;
         yield return new WaitForSeconds(2 * (1 / rate));
         _isReady = true;
-        Debug.Log(Time.time);
+        //Debug.Log(Time.time);
     }
 
     private void SplashDamage(RaycastHit center)
     {
-        Collider[] colliders = Physics.OverlapSphere(center.collider.transform.position, 2f);
+        Collider[] colliders = Physics.OverlapSphere(center.collider.transform.position, _activeWeapon.Splash);
         foreach (Collider c in colliders)
         {
             if (c.GetComponent<Target>())
             {
                 c.GetComponent<Target>().RayTargetHit(_activeWeapon);
-            }
-            
+            }    
         }
     }
 
