@@ -19,6 +19,7 @@ public class WeaponSystem : ScriptableObject
     [SerializeField][Tooltip("Area Of Effect or Splash Damage")] private float _aoe;
 
     [SerializeField] [Range(0, 1)] private float _critStrike;
+    [SerializeField] [Range(0, 1)] private float _critDmg;
 
     [Header("Unique Stats")]
     [SerializeField] private bool _isStream;
@@ -37,6 +38,8 @@ public class WeaponSystem : ScriptableObject
     public float Knockback => _knockback;
     public float Splash => _aoe;
     public float Crit => _critStrike;
+
+    public float CritDmg => _critDmg;
 
     public bool IsStream => _isStream;
 

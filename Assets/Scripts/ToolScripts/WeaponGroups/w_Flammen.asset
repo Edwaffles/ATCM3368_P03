@@ -19,5 +19,6 @@ MonoBehaviour:
   _knockback: 30
   _aoe: 0
   _critStrike: 0
+  _critDmg: 0
   _isStream: 1
   _isOverTime: 0

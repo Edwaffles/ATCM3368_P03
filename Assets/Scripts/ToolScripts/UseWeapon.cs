@@ -35,7 +35,7 @@ public class UseWeapon : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, _activeWeapon.Range))
                 {
-                    hit.collider.SendMessage("RayTargetHit", _activeWeapon, SendMessageOptions.DontRequireReceiver);
+                    SplashDamage(hit);
                 }
             }
         }
@@ -46,17 +46,13 @@ public class UseWeapon : MonoBehaviour
                 Debug.Log(Time.time);
                 RaycastHit hit;
                 if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, _activeWeapon.Range))
-                {
-                    hit.collider.SendMessage("RayTargetHit", _activeWeapon, SendMessageOptions.DontRequireReceiver);
-
+                {                    
+                    SplashDamage(hit);
                 }
-
                 StartCoroutine(RateOfAttack(_activeWeapon.AttackRate));
-
             }
         }        
     }
-
     IEnumerator RateOfAttack(float rate)
     {
         _isReady = false;
@@ -65,7 +61,18 @@ public class UseWeapon : MonoBehaviour
         Debug.Log(Time.time);
     }
 
-
+    private void SplashDamage(RaycastHit center)
+    {
+        Collider[] colliders = Physics.OverlapSphere(center.collider.transform.position, 2f);
+        foreach (Collider c in colliders)
+        {
+            if (c.GetComponent<Target>())
+            {
+                c.GetComponent<Target>().RayTargetHit(_activeWeapon);
+            }
+            
+        }
+    }
 
    
 }

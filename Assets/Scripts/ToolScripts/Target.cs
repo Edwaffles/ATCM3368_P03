@@ -22,16 +22,15 @@ public class Target : MonoBehaviour
 
         if(dDmg > usedWeapon.Crit)
         {
-            _hitpoints -= (usedWeapon.Damage) * 2;
+            _hitpoints -= (usedWeapon.Damage) ;
         }
         else
         {
-            _hitpoints -= (usedWeapon.Damage);
+            _hitpoints -= (usedWeapon.Damage) + (usedWeapon.Damage * usedWeapon.CritDmg);
         }
 
         Knocked(usedWeapon.Knockback);
         Debug.Log(usedWeapon.Name + " : "+ _hitpoints);
-
     }
 
     private void Knocked(float knockbackForce)
